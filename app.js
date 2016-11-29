@@ -58,24 +58,20 @@ app.get('/delete', function (req, res) {
 
 // Sending RAW email including an attachment.
 app.get('/send', function (req, res) {
-    var ses_mail = "From: 'AWS Tutorial Series' <" + email + ">\n";
+    var ses_mail = "From: 'ssiot data' <" + email + ">\n";
     ses_mail = ses_mail + "To: " + email + "\n";
-    ses_mail = ses_mail + "Subject: AWS SES Attachment Example\n";
+    ses_mail = ses_mail + "Subject: car\n";
     ses_mail = ses_mail + "MIME-Version: 1.0\n";
     ses_mail = ses_mail + "Content-Type: multipart/mixed; boundary=\"NextPart\"\n\n";
     ses_mail = ses_mail + "--NextPart\n";
     ses_mail = ses_mail + "Content-Type: text/html; charset=us-ascii\n\n";
-    ses_mail = ses_mail + "This is the body of the email.\n\n";
-    ses_mail = ses_mail + "--NextPart\n";
-    ses_mail = ses_mail + "Content-Type: text/plain;\n";
-    ses_mail = ses_mail + "Content-Disposition: attachment; filename=\"attachment.txt\"\n\n";
-    ses_mail = ses_mail + "AWS Tutorial Series - Really cool file attachment!" + "\n\n";
+    ses_mail = ses_mail + "slot has been occupied\n\n";
     ses_mail = ses_mail + "--NextPart";
     
     var params = {
         RawMessage: { Data: new Buffer(ses_mail) },
         Destinations: [ email ],
-        Source: "'AWS Tutorial Series' <" + email + ">'"
+        Source: "'ssiot data' <" + email + ">'"
     };
     
     ses.sendRawEmail(params, function(err, data) {
