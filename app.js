@@ -7,7 +7,7 @@ var aws     = require('aws-sdk');
 var email   = "karan13047@iiitd.ac.in";
     
 // Load your AWS credentials and try to instantiate the object.
-aws.config.loadFromPath('./config-sample.json');
+aws.config.loadFromPath('./config.json');
 
 // Instantiate SES.
 var ses = new aws.SES();
